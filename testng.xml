@@ -5,6 +5,5 @@
         <classes>
             <class name="base.AllureReport"/>
         </classes>
-
     </test>
 </suite>
