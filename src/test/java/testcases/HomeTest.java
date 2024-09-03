@@ -1,6 +1,8 @@
 package testcases;
 
+import annotations.TestAnnotation;
 import base.Browser;
+import enums.TestCategory;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
@@ -10,7 +12,8 @@ import java.io.IOException;
 
 public class HomeTest  extends Browser{
 
-@Test
+@TestAnnotation(author = {"Reshma Nayak"}, category = {TestCategory.SMOKE})
+@Test(description = "verifying the Home page where we are adding the items to the Cart and navigating to the checkout page")
 public void itemSearch() throws IOException, InterruptedException {
 LoginPage login = new LoginPage(driver);
 login.doLogin(config.getProperties("username"),config.getProperties("password"));

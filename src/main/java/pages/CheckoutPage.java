@@ -35,6 +35,7 @@ public CheckoutPage(WebDriver driver){
             Thread.sleep(4000);
         }
     }
+
 public void addAddress(String addressString) throws InterruptedException {
 if(addNewAddress.isDisplayed() && addNewAddress.isEnabled()){
     addNewAddress.click();
@@ -49,7 +50,6 @@ if(addNewAddress.isDisplayed() && addNewAddress.isEnabled()){
 }
 }
 
-
 public void selectAddress() throws InterruptedException {
 if(selectAddedAddress.isDisplayed()) {
 selectAddedAddress.click();
@@ -57,14 +57,13 @@ Thread.sleep(4000);
 }
 }
 
-
-
 public void confirmOrder() throws InterruptedException {
 if(placeOrderBtn.isDisplayed() && selectAddedAddress.isSelected()) {
 placeOrderBtn.getText();
 Thread.sleep(5000);
 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 wait.until(ExpectedConditions.elementToBeClickable(placeOrderBtn)).click();
+Thread.sleep(10000);
 }
 }
 
