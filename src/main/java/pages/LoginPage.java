@@ -1,5 +1,6 @@
 package pages;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -31,11 +33,13 @@ WebElement loginBtn;
 
     public void doLogin(String username, String password) throws InterruptedException {
      if(login.isDisplayed() && login.isEnabled()) {
+         Assert.assertTrue(true,"Login text"+login.getText());
          login.click();
      }
     this.username.sendKeys(username);
     this.password.sendKeys(password);
         if(loginBtn.isDisplayed() && loginBtn.isEnabled()) {
+            Assert.assertTrue(true,"Login Button"+loginBtn.getText());
             loginBtn.click();
         }
 

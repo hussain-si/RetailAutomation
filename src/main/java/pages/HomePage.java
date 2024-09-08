@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import utils.Config;
 
 import java.io.IOException;
@@ -24,18 +25,20 @@ PageFactory.initElements(driver,this);
 }
 
 public void itemsResults() throws InterruptedException {
-   if(addToCart.isEnabled() && addToCart.isDisplayed())  {
-       //verify the text of addToCart
-
-       addToCart.click();
-       Thread.sleep(4000);
+if(addToCart.isEnabled() && addToCart.isDisplayed())  {
+//verify the text of addToCart
+Assert.assertTrue(true,"addToCart text"+addToCart.getText());
+addToCart.click();
+Thread.sleep(4000);
    }
 }
 
 public void checkout() throws InterruptedException {
-    if(itemCheckout.isDisplayed() && itemCheckout.isEnabled()){
-        itemCheckout.click();
-        Thread.sleep(4000);
+ if(itemCheckout.isDisplayed() && itemCheckout.isEnabled()){
+//verify the text of the itemCheckout button
+Assert.assertTrue(true,"itemCheckout text"+itemCheckout.getText());
+itemCheckout.click();
+Thread.sleep(4000);
     }
 
 }
