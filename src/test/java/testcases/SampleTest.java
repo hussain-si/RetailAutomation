@@ -12,24 +12,26 @@ public class SampleTest {
 
     @Step("Open login page")
     public void openLoginPage() {
-        // Code to open the login page
+        System.out.println("Login page opened");
     }
 
     @Step("Enter valid credentials")
     public void enterCredentials() {
-        // Code to enter credentials
+        System.out.println("Credentials entered");
     }
 
     @Step("Submit login form")
     public void submitForm() {
-        // Code to submit the form
+        System.out.println("Form submitted");
     }
 
+    @Description("Test login with valid credentials")
+    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void testValidLogin() {
         openLoginPage();
         enterCredentials();
         submitForm();
-        // Assertions to verify login success
+        Assert.assertTrue(true); // Replace with actual verification logic
     }
 }
