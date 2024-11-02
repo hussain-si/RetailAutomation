@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -30,6 +31,12 @@ public class Browser {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
 
+        }
+        else if (config.getProperties("browser").equals("remote")) {
+            WebDriverManager.edgedriver().setup();
+            EdgeOptions options = new EdgeOptions();
+            options.addArguments("--headless"); // Enable headless mode
+            driver = new EdgeDriver(options);
         }
         driver.get(config.getProperties("testSite"));
         driver.manage().window().maximize();
