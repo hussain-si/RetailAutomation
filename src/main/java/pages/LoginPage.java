@@ -1,6 +1,7 @@
 package pages;
 
 import com.relevantcodes.extentreports.LogStatus;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -15,31 +16,31 @@ import java.time.Duration;
 
 public class LoginPage {
 
-public WebDriver driver ;
-@FindBy(xpath="//div[@class='css-vb6e92']/child::button[1]")
-WebElement login;
-@FindBy(xpath="//input[@id='username' and @name='username']")
-WebElement username;
-@FindBy(xpath="//input[@id='password']")
-WebElement password;
-@FindBy(xpath="//button[@type='button' and text()='Login to QKart']")
-WebElement loginBtn;
+    public WebDriver driver;
+    @FindBy(xpath = "//div[@class='css-vb6e92']/child::button[1]")
+    WebElement login;
+    @FindBy(xpath = "//input[@id='username' and @name='username']")
+    WebElement username;
+    @FindBy(xpath = "//input[@id='password']")
+    WebElement password;
+    @FindBy(xpath = "//button[@type='button' and text()='Login to QKart']")
+    WebElement loginBtn;
 
- public LoginPage(WebDriver driver){
- this.driver=driver;
- PageFactory.initElements(driver,this);
- }
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
-
+    @Step("Login Page")
     public void doLogin(String username, String password) throws InterruptedException {
-     if(login.isDisplayed() && login.isEnabled()) {
-         Assert.assertTrue(true,"Login text"+login.getText());
-         login.click();
-     }
-    this.username.sendKeys(username);
-    this.password.sendKeys(password);
-        if(loginBtn.isDisplayed() && loginBtn.isEnabled()) {
-            Assert.assertTrue(true,"Login Button"+loginBtn.getText());
+        if (login.isDisplayed() && login.isEnabled()) {
+            Assert.assertTrue(true, "Login text" + login.getText());
+            login.click();
+        }
+        this.username.sendKeys(username);
+        this.password.sendKeys(password);
+        if (loginBtn.isDisplayed() && loginBtn.isEnabled()) {
+            Assert.assertTrue(true, "Login Button" + loginBtn.getText());
             loginBtn.click();
         }
 
