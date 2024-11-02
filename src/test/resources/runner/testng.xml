@@ -23,4 +23,9 @@
             <class name="testcases.SearchResultTest"/>
         </classes>
     </test>
+    <test name="Sample test">
+        <classes>
+            <class name="testcases.SampleTest"/>
+        </classes>
+    </test>
 </suite>
