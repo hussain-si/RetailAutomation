@@ -10,18 +10,16 @@ import pages.SearchResult;
 
 public class SearchResultTest extends Browser {
 
-    @TestAnnotation(author = {"Reshma Nayak"}, category = {TestCategory.SMOKE})
+    @TestAnnotation(author = {"Hussain"}, category = {TestCategory.SMOKE})
     @Test(description = "searching the particular items ")
     public void resultSearch() throws InterruptedException {
         LoginPage login = new LoginPage(driver);
-        login.doLogin(config.getProperties("username"),config.getProperties("password"));
+        login.doLogin(config.getProperties("username"), config.getProperties("password"));
         SearchResult result = new SearchResult(driver);
         result.searchForItems(config.getProperties("item1"));
         result.getTitleOfItemSearch();
         result.openSizeChart();
         result.closeSizeChart();
-
-
 
 
     }

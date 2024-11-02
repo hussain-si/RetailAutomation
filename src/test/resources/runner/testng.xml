@@ -5,7 +5,22 @@
 
     <test name="Home Page">
         <classes>
+            <class name="testcases.HomeTest"/>
+        </classes>
+    </test>
+    <test name="Login Page">
+        <classes>
+            <class name="testcases.LoginTest"/>
+        </classes>
+    </test>
+    <test name="CheckOut Page">
+        <classes>
             <class name="testcases.CheckoutPageTest"/>
+        </classes>
+    </test>
+    <test name="Search Result Page">
+        <classes>
+            <class name="testcases.SearchResultTest"/>
         </classes>
     </test>
 </suite>
