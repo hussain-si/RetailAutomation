@@ -21,7 +21,7 @@ public class CheckoutPage {
     WebElement addNewAddress;
     @FindBy(xpath = "//textarea[@placeholder='Enter your complete address']")
     WebElement addAddressBox;
-    @FindBy(xpath = "//button[text() = 'Add']")
+    @FindBy(xpath = "//butto[text() = 'Add']")
     WebElement addBtn;
     @FindBy(xpath = "//button[text() = 'PLACE ORDER']")
     WebElement placeOrderBtn;
