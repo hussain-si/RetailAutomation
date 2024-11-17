@@ -32,7 +32,7 @@ public class Browser {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
         }
-        else if (config.getProperties("browser").equals("remote")) {
+        else if (config.getProperties("browser").equalsIgnoreCase("remote")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless"); // Enable headless mode
