@@ -3,6 +3,7 @@ package base;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,23 +21,23 @@ public class Browser {
    @BeforeClass
     public void setup() throws IOException {
      config = new Config();
-        if (config.getProperties("browser").equals("chrome")) {
-            WebDriverManager.chromedriver().setup();
+        if (config.getProperties("browser").equalsIgnoreCase("chrome")) {
+            WebDriverManager.chromedriver().clearResolutionCache().setup();
             driver = new ChromeDriver();
-        } else if (config.getProperties("browser").equals("edge")) {
+        } else if (config.getProperties("browser").equalsIgnoreCase("edge")) {
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
         }else
-        if (config.getProperties("browser").equals("firefox")) {
+        if (config.getProperties("browser").equalsIgnoreCase("firefox")) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
-
         }
         else if (config.getProperties("browser").equals("remote")) {
-            WebDriverManager.edgedriver().setup();
-            EdgeOptions options = new EdgeOptions();
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless"); // Enable headless mode
-            driver = new EdgeDriver(options);
+            options.addArguments("--no-sandbox");
+            driver = new ChromeDriver(options);
         }
         driver.get(config.getProperties("testSite"));
         driver.manage().window().maximize();

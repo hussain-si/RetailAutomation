@@ -13,11 +13,10 @@ public class Config {
         //initialize the property file
         property = new Properties();
         //specify the file path
-        FileInputStream fis = new FileInputStream("src\\test\\resources\\properties\\config.properties");
+        FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\config.properties");
         //load or read the property file for specified path
         property.load(fis);
     }
-
 
     public String getProperties(String key)  {
 
