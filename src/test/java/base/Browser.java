@@ -33,11 +33,11 @@ public class Browser {
             driver = new FirefoxDriver();
         }
         else if (config.getProperties("browser").equalsIgnoreCase("remote")) {
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
+            WebDriverManager.edgedriver().setup();
+            EdgeOptions options = new EdgeOptions();
             options.addArguments("--headless"); // Enable headless mode
             options.addArguments("--no-sandbox");
-            driver = new ChromeDriver(options);
+            driver = new EdgeDriver(options);
         }
         driver.get(config.getProperties("testSite"));
         driver.manage().window().maximize();
