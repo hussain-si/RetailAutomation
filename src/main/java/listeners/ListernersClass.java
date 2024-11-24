@@ -3,6 +3,7 @@ package listeners;
 import annotations.TestAnnotation;
 import enums.TestCategory;
 import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 import io.qameta.allure.model.Status;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
@@ -18,32 +19,29 @@ import org.testng.ITestResult;
 public class ListernersClass implements ITestListener, ISuiteListener
 {
 
+	@Step("{0}")
+	public void logStep(String message) {
+		System.out.println(message); // Optional: Log to console
+	}
+
 	@Override
 	public void onStart(ISuite suite)
 	{
-		// Initialize Allure report before suite starts
-		try {
-			// No need for specific initialization code in Allure
-			// It automatically handles the report generation and output directory
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
+		logStep("Test Suite Started: " + suite.getName());
 	}
 
 	@Override
 	public void onFinish(ISuite suite)
 	{
-		// No need for explicit flush for Allure, it's done automatically
+		logStep("Test Suite Finished: " + suite.getName());
 	}
 
 	@Override
 	public void onTestStart(ITestResult result)
 	{
-		// Create test in Allure
-		String methodName = result.getMethod().getMethodName();
+		logStep("Starting test: " + result.getMethod().getMethodName());
 		String description = result.getMethod().getDescription();
 		Allure.description(description);
-		Allure.link("Test Method", methodName);
 		try {
 			// Add custom information from annotations
 			String[] authors = result.getMethod().getConstructorOrMethod().getMethod()
@@ -61,39 +59,41 @@ public class ListernersClass implements ITestListener, ISuiteListener
 	public void onTestSuccess(ITestResult result)
 	{
 		// Log success status in Allure
-		Allure.step(result.getMethod().getMethodName() + " is passed !", Status.PASSED);
+		//Allure.step(result.getMethod().getMethodName() + " is passed !", Status.PASSED);
+		logStep("Test Passed: " + result.getMethod().getMethodName())
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result)
 	{
 		// Log failure status in Allure
-		Allure.step(result.getMethod().getMethodName() + " is failed !", Status.FAILED);
-		// Optionally, capture screenshot or other data if required
+		//Allure.step(result.getMethod().getMethodName() + " is failed !", Status.FAILED);
+		logStep("Test Failed: " + result.getMethod().getMethodName());
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result)
 	{
 		// Log skipped status in Allure
-		Allure.step(result.getMethod().getMethodName() + " is Skipped!", Status.SKIPPED);
+		//Allure.step(result.getMethod().getMethodName() + " is Skipped!", Status.SKIPPED);
+		logStep("Test Skipped: " + result.getMethod().getMethodName());
 	}
 
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result)
 	{
-		// You can log partial success or other custom actions
+		logStep("Test Partially Passed: " + result.getMethod().getMethodName());
 	}
 
 	@Override
 	public void onStart(ITestContext context)
 	{
-		// Initialize context-level data if necessary
+		logStep("Test Context Started: " + context.getName());
 	}
 
 	@Override
 	public void onFinish(ITestContext context)
 	{
-		// Handle any final actions after the test context completes
+		logStep("Test Context Finished: " + context.getName());
 	}
 }
