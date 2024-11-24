@@ -21,19 +21,13 @@ public class ListernersClass implements ITestListener, ISuiteListener
 	@Override
 	public void onStart(ISuite suite)
 	{
-		// Initialize Allure report before suite starts
-		try {
-			// No need for specific initialization code in Allure
-			// It automatically handles the report generation and output directory
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
+		Allure.step("Test Suite Started: " + suite.getName());
 	}
 
 	@Override
 	public void onFinish(ISuite suite)
 	{
-		// No need for explicit flush for Allure, it's done automatically
+		Allure.step("Test Suite Finished: " + suite.getName());
 	}
 
 	@Override
