@@ -83,12 +83,12 @@ public class ListernersClass implements ITestListener, ISuiteListener
 	@Override
 	public void onStart(ITestContext context)
 	{
-		// Initialize context-level data if necessary
+		Allure.step("Test Context Started: " + context.getName());
 	}
 
 	@Override
 	public void onFinish(ITestContext context)
 	{
-		// Handle any final actions after the test context completes
+		Allure.step("Test Context Finished: " + context.getName());
 	}
 }
