@@ -34,10 +34,10 @@ public class ListernersClass implements ITestListener, ISuiteListener
 	public void onTestStart(ITestResult result)
 	{
 		// Create test in Allure
-		String methodName = result.getMethod().getMethodName();
+		Allure.step("Test Started: " + result.getMethod().getMethodName());
 		String description = result.getMethod().getDescription();
 		Allure.description(description);
-		Allure.link("Test Method", methodName);
+		//Allure.link("Test Method", methodName);
 		try {
 			// Add custom information from annotations
 			String[] authors = result.getMethod().getConstructorOrMethod().getMethod()
