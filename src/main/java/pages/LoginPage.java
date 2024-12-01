@@ -7,6 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -17,14 +18,14 @@ import java.time.Duration;
 public class LoginPage {
 
     public WebDriver driver;
-    @FindBy(xpath = "//div[@class='css-vb6e92']/child::button[1]")
-    WebElement login;
-    @FindBy(xpath = "//input[@id='username' and @name='username']")
-    WebElement username;
-    @FindBy(xpath = "//input[@id='password']")
-    WebElement password;
-    @FindBy(xpath = "//button[@type='button' and text()='Login to QKart']")
-    WebElement loginBtn;
+    @FindBy(how= How.XPATH,using= "//div[@class='css-vb6e92']/child::button[1]")
+    private static WebElement login;
+    @FindBy(how= How.XPATH,using= "//input[@id='username' and @name='username']")
+    private static WebElement username;
+    @FindBy(how= How.XPATH,using = "//input[@id='password']")
+    private static WebElement password;
+    @FindBy(how= How.XPATH,using = "//button[@type='button' and text()='Login to QKart']")
+    private static WebElement loginBtn;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;

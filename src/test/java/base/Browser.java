@@ -7,33 +7,46 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import utils.Config;
+
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class Browser {
     public WebDriver driver;
-    public Config config ;
+    public  Config config ;
 
    @BeforeClass
     public void setup() throws IOException {
      config = new Config();
         if (config.getProperties("browser").equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().clearResolutionCache().setup();
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.setExperimentalOption("excludeSwitches", new String[] {"enable-automation"});
+            driver = new ChromeDriver(options);
         } else if (config.getProperties("browser").equalsIgnoreCase("edge")) {
-            WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver();
+            WebDriverManager.edgedriver().clearResolutionCache().setup();
+
+
+            EdgeOptions options = new EdgeOptions();
+            options.setExperimentalOption("excludeSwitches", new String[] {"enable-automation"});
+            driver = new EdgeDriver(options);
         }else
         if (config.getProperties("browser").equalsIgnoreCase("firefox")) {
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
+            WebDriverManager.firefoxdriver().clearResolutionCache().setup();
+            FirefoxOptions options = new FirefoxOptions();
+            options.addPreference("dom.webnotifications.enabled", false); // Example to disable notifications
+            options.addPreference("privacy.trackingprotection.enabled", true); // Example to enable tracking protection
+            driver = new FirefoxDriver(options);
         }
         else if (config.getProperties("browser").equalsIgnoreCase("remote")) {
             WebDriverManager.edgedriver().setup();
+
+
             EdgeOptions options = new EdgeOptions();
             options.addArguments("--headless"); // Enable headless mode
             options.addArguments("--no-sandbox");

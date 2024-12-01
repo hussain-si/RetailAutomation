@@ -4,15 +4,11 @@ import annotations.TestAnnotation;
 import base.Browser;
 import enums.TestCategory;
 import org.testng.annotations.Test;
-import pages.CheckoutPage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.SearchResult;
+import pages.*;
 
-public class CheckoutPageTest extends Browser {
-
-    @TestAnnotation(author = {"Reshma"}, category = {TestCategory.SMOKE})
-    @Test(description = "verifying the checkout page where we are adding the shipping address and confirming the payment")
+public class PaymentPageTest extends Browser {
+    @TestAnnotation(author = {"Reshma"}, category = {TestCategory.REGRESSION})
+    @Test(description = "verifying the Payment page where we get confirmation of order placed ")
     public void placeOrder() throws InterruptedException {
         LoginPage login = new LoginPage(driver);
         login.doLogin(config.getProperties("username"), config.getProperties("password"));
@@ -29,5 +25,8 @@ public class CheckoutPageTest extends Browser {
         checkout.addAddress(config.getProperties("address"));
         checkout.selectAddress();
         checkout.confirmOrder();
+        PaymentPage payment = new PaymentPage(driver);
+        payment.verifyButtonDisplayed();
+        payment.navigateToHomePage();
     }
 }

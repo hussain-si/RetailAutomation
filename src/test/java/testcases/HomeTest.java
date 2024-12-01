@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class HomeTest extends Browser {
 
-    @TestAnnotation(author = {"Hussain"}, category = {TestCategory.SMOKE})
+    @TestAnnotation(author = {"Reshma"}, category = {TestCategory.SMOKE})
     @Test(description = "verifying the Home page where we are adding the items to the Cart and navigating to the checkout page")
     public void itemSearch() throws IOException, InterruptedException {
         LoginPage login = new LoginPage(driver);

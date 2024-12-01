@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -15,20 +16,20 @@ import java.util.List;
 
 public class SearchResult {
     public WebDriver driver;
-    @FindBy(xpath = "//input[@name='search' and @placeholder='Search for items/categories']")
-    WebElement searchItem;
+    @FindBy(how= How.XPATH,using = "//input[@name='search' and @placeholder='Search for items/categories']")
+    private static WebElement searchItem;
     //Finding the title of the item(product) that we searched
-    @FindBy(xpath = "//div[@class='MuiCardContent-root css-1qw96cp']/p")
-    WebElement element;
+    @FindBy(how= How.XPATH,using= "//div[@class='MuiCardContent-root css-1qw96cp']/p")
+    private static WebElement element;
     //Opening the size chart
-    @FindBy(xpath = "//button[normalize-space()='Size chart']")
-    WebElement openSizeCharts;
+    @FindBy(how= How.XPATH,using = "//button[normalize-space()='Size chart']")
+    private static WebElement openSizeCharts;
     //closing the size chart
-    @FindBy(xpath = "//div[contains(@class,'MuiDialog-container')]/child::div")
-    WebElement closeSizeCharts;
+    @FindBy(how= How.XPATH,using= "//div[contains(@class,'MuiDialog-container')]/child::div")
+    private static WebElement closeSizeCharts;
     //size chart selecting from dropdown
-    @FindBy(xpath = "(//select[@name='age'])[1]")
-    WebElement dropDownSizeChart;
+    @FindBy(how= How.XPATH,using = "(//select[@name='age'])[1]")
+    private static WebElement dropDownSizeChart;
 
 
     public SearchResult(WebDriver driver) {

@@ -4,13 +4,12 @@ import annotations.TestAnnotation;
 import base.Browser;
 import enums.TestCategory;
 import org.testng.annotations.Test;
-import pages.HomePage;
 import pages.LoginPage;
 import pages.SearchResult;
 
 public class SearchResultTest extends Browser {
 
-    @TestAnnotation(author = {"Hussain"}, category = {TestCategory.SMOKE})
+    @TestAnnotation(author = {"Reshma"}, category = {TestCategory.SMOKE})
     @Test(description = "searching the particular items ")
     public void resultSearch() throws InterruptedException {
         LoginPage login = new LoginPage(driver);

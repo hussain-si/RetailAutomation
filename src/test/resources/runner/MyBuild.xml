@@ -9,9 +9,10 @@
     <test name="UI Page">
         <classes>
             <class name="testcases.LoginTest"/>
-            <class name="testcases.CheckoutPageTest"/>
+            <class name="testcases.HomeTest"/>
             <class name="testcases.SearchResultTest"/>
-            <class name="testcases.SampleTest"/>
+            <class name="testcases.CheckoutPageTest"/>
+            <class name="testcases.PaymentPageTest"/>
         </classes>
     </test>
 </suite>
