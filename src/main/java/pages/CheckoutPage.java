@@ -34,7 +34,7 @@ public CheckoutPage(WebDriver driver){
     public void deleteAddress() throws InterruptedException {
         if(deleteBtn.isDisplayed() && deleteBtn.isEnabled()) {
             //verify the text of delete button
-            Assert.assertTrue(true,"Delete Button text"+deleteBtn.getText());
+            
             deleteBtn.click();
             Thread.sleep(5000);
         }
@@ -43,13 +43,13 @@ public CheckoutPage(WebDriver driver){
 public void addAddress(String addressString) throws InterruptedException {
 if(addNewAddress.isDisplayed() && addNewAddress.isEnabled()){
     //verify the text of the addNewAddress button
-    Assert.assertTrue(true,"addNewAddress Button text"+addNewAddress.getText());
+   
     addNewAddress.click();
     Thread.sleep(7000);
     //verify that address box is displayed to enter the new address
     if(addAddressBox.isEnabled() && addAddressBox.isDisplayed()){
     //verifying the text of the addAddressBox
-    Assert.assertTrue(true,"addAddressBox Button text"+addAddressBox.getText());
+    
     addAddressBox.sendKeys(addressString);
     //click on ADD button to add address
     addBtn.click();
@@ -61,7 +61,7 @@ if(addNewAddress.isDisplayed() && addNewAddress.isEnabled()){
 public void selectAddress() throws InterruptedException {
 if(selectAddedAddress.isDisplayed()) {
 //verify the text of added address
- Assert.assertTrue(true,"added address text"+selectAddedAddress.getText());
+ 
 selectAddedAddress.click();
 Thread.sleep(4000);
 }
@@ -69,7 +69,7 @@ Thread.sleep(4000);
 
 public void confirmOrder() throws InterruptedException {
 if(placeOrderBtn.isEnabled()) {
-    Assert.assertTrue(true,"place order"+placeOrderBtn.getText());
+  
 placeOrderBtn.click();
 /*Thread.sleep(5000);
 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
